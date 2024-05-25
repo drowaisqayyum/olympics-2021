@@ -1,4 +1,4 @@
-# Olymplics 2021 Data Engineering project using Azure
+# Olympics 2021 Data Engineering project using Azure
 
 ## Introduction
 
@@ -98,8 +98,6 @@ The dataset's source is Kaggle [Data
 Source](https://www.kaggle.com/datasets/arjunprasadsarkhel/2021-olympics-in-tokyo
 ), a renowned platform for data science and machine learning
 enthusiasts.
-
-https://www.kaggle.com/datasets/arjunprasadsarkhel/2021-olympics-in-tokyo
 
 By leveraging this comprehensive dataset, the project aims to derive
 meaningful insights, uncover patterns, and analyze various aspects of

@@ -1,0 +1,249 @@
+#+title: Olymplics 2021 Data Engineering project using Azure
+#+author: Owais Qayyum
+
+* Introduction
+This project demonstrates a comprehensive data engineering and
+analytical workflow using the Azure ecosystem to process and gain
+insights from the Tokyo Olympic dataset. The project encompasses the
+following key features and stages:
+
+1. Data Ingestion:
+   - Ingest the Tokyo Olympic dataset from a CSV file hosted on GitHub
+     using Azure Data Factory.
+   - Utilize data pipeline capabilities for reliable and efficient
+     data retrieval.
+
+2. Data Storage:
+   - Store the ingested dataset in Azure Data Lake Storage Gen2,
+     benefiting from its scalability and performance.
+   - Leverage the secure and cost-effective storage solution optimized
+     for big data analytics.
+
+3. Data Transformation:
+   - Transform and enrich the dataset using Azure Databricks, a fully
+     managed Apache Spark platform.
+   - Perform data manipulations, cleansing, and feature engineering to
+     prepare the data for advanced analytics.
+
+4. Enriched Data Storage:
+   - Persist the transformed and enriched dataset back into Azure Data
+     Lake Storage Gen2.
+   - Maintain a centralized repository for the processed data,
+     enabling integration with downstream analytics.
+
+5. Advanced Analytics:
+   - Perform advanced analytical computations on the enriched dataset
+     using Azure Synapse Analytics.
+   - Utilize distributed computing and SQL capabilities to uncover
+     patterns, trends, and insights.
+
+6. Data Visualization:
+   - Visualize the derived insights using Azure Synapse Analytics or
+     Power BI.
+   - Create dashboards, reports, and visualizations to communicate the
+     findings effectively to stakeholders.
+
+By leveraging the Azure ecosystem, including Azure Data Factory, Azure
+Data Lake Storage Gen2, Azure Databricks, Azure Synapse Analytics, and
+Power BI, this project provides a comprehensive approach to process
+and analyze the Tokyo Olympic dataset. The workflow ensures efficient
+data ingestion, transformation, storage, advanced analytics, and
+visualization, enabling data-driven decision making and valuable
+insights.
+
+
+* DataSet: Tokyo 2021 Olympic Games
+The dataset utilized in this project provides a comprehensive
+collection of information pertaining to the 2020 Olympic Games, which
+were held in Tokyo in 2021 due to the COVID-19 pandemic. The dataset
+encompasses a wide array of details related to the participants,
+teams, and events of the Tokyo Olympics.
+
+Key features of the dataset include:
+
+1. Athlete Information:
+   - The dataset contains records of over 11,000 athletes who
+     participated in the Tokyo Olympics.
+   - Each athlete's name, representing country, gender, and discipline
+     are meticulously documented.
+
+2. Discipline Coverage:
+   - The dataset covers a total of 47 distinct disciplines,
+     encompassing a diverse range of sports and events.
+   - This extensive coverage allows for a comprehensive analysis of
+     athlete performance across various domains.
+
+3. Team Details:
+   - The dataset includes information on 743 teams that took part in
+     the Tokyo Olympics.
+   - Each team's name, country of representation, and the number of
+     athletes in the team are recorded.
+
+4. Entries by Gender:
+   - The dataset provides a breakdown of entries based on gender,
+     enabling gender-based analysis and comparisons.
+   - This information allows for an examination of gender
+     representation and participation patterns in the Olympics.
+
+5. Coaching Staff:
+   - The names and details of the coaches associated with each team
+     are included in the dataset.
+   - This information facilitates the exploration of coaching dynamics
+     and their potential impact on team performance.
+
+The dataset's source is Kaggle, a renowned platform for data science
+and machine learning enthusiasts. 
+
+https://www.kaggle.com/datasets/arjunprasadsarkhel/2021-olympics-in-tokyo
+
+By leveraging this comprehensive dataset, the project aims to derive
+meaningful insights, uncover patterns, and analyze various aspects of
+the Tokyo Olympics. The richness and granularity of the data enable a
+thorough examination of athlete performance, team dynamics, gender
+representation, and the overall landscape of the 2020 Olympic Games
+held in Tokyo.
+
+* Azure Services Used
+*** Azure Data Factory (ADF):
+Azure Data Factory (ADF) is used for data ingestion from the GitHub
+repository. It reliably transfers the Tokyo Olympic dataset from the
+CSV file to Azure Data Lake Storage Gen2.
+
+*** Azure Data Lake Storage Gen2 (ADLS Gen2):
+Azure Data Lake Storage Gen2 (ADLS Gen2) serves as the central data
+storage solution for the project. It provides a scalable and secure
+environment to store and manage the ingested dataset.
+
+*** Azure Databricks:
+Azure Databricks is employed for data transformation tasks. It enables
+complex data processing, cleansing, and feature engineering using
+Apache Spark's distributed computing capabilities.
+
+*** Azure Synapse Analytics:
+Azure Synapse Analytics is utilized to perform advanced analytics on
+the transformed dataset. It offers a unified platform for data
+integration, analysis, and insight generation, combining the strengths
+of SQL and Spark.
+
+* Workflow
+** Initial Setup
+- Create Azure Free Subscription acoount
+- Create a Resource Group 'tokyo-olympic-data' to house and manage all
+  the Azure resources associated with this project.
+
+- Within the created resource group, set up a storage account. This is
+  specifically configured to leverage Azure Data Lake Storage(ADLS)
+  Gen2 capabilities.
+
+- Create a Container inside this storage account to hold the project's
+  data. Two directories 'raw-data' and 'transfromed-data' are created
+  to store raw data and transformed data.
+
+
+
+** Data Ingestion: Azure Data Factory
+Data Ingestion with Azure Data Factory
+
+**** Step 1: Create an Azure Data Factory Workspace
+- Begin by creating a new Azure Data Factory workspace within the
+  previously established resource group.
+- Ensure that the workspace is configured with the necessary
+  permissions and settings to enable data integration pipelines.
+
+**** Step 2: Launch Azure Data Factory Studio
+- After successfully setting up the Azure Data Factory workspace,
+  launch the Azure Data Factory Studio.
+- The studio provides a user-friendly interface for designing and
+  managing data integration pipelines.
+
+**** Step 3: Upload the Tokyo Olympics Dataset to GitHub
+- Obtain the Tokyo Olympics dataset from Kaggle
+  (https://www.kaggle.com/datasets/arjunprasadsarkhel/2021-olympics-in-tokyo)
+- Upload the dataset to a GitHub repository, ensuring that it is
+  accessible via HTTP requests.
+- Make note of the GitHub repository URL and any necessary
+  authentication details.
+
+
+**** Step 4: Create a New Data Integration Pipeline
+- Within the Azure Data Factory Studio, initialize a new data
+  integration pipeline.
+- Utilize the "Copy Data" task to efficiently move data between
+  various supported sources and destinations.
+- The "Copy Data" task allows for seamless data transfer from the
+  GitHub repository to the desired destination.
+
+**** Step 5: Configure the Data Source
+- In the pipeline, configure the data source using the HTTP template.
+- Specify the GitHub repository URL where the Tokyo Olympics dataset
+  is hosted.
+- If authentication is required to access the dataset, provide the
+  necessary credentials or authentication tokens.
+
+**** Step 6: Establish the Linked Service for Source
+- Create a linked service within Azure Data Factory to establish a
+  connection to the GitHub repository.
+- Configure the linked service with the appropriate authentication
+  mechanism (e.g., OAuth, personal access token) to securely access
+  the dataset.
+
+**** Step 7: Configure the File Format and Linked Service for Sink
+- Specify the file format of the Tokyo Olympics dataset (e.g., CSV,
+  JSON) in the sink configuration.
+- Create a linked service for the destination storage account where
+  the ingested data will be stored.
+- Configure the linked service with the necessary connection details
+  and authentication credentials.
+
+**** Step 8: Repeat Steps 5-7 for All Datasets
+- If the Tokyo Olympics dataset consists of multiple files or tables,
+  repeat steps 5-7 for each dataset.
+- Ensure that each dataset has its corresponding data source, linked
+  service, and file format configured correctly.
+
+**** Step 9: Connect and Run the Copy Data Activities
+- In the pipeline, connect all the configured copy data activities in
+  the desired sequence.
+- Ensure that the activities are properly linked and the data flow is
+  correctly defined.
+- Validate the pipeline to check for any errors or missing
+  configurations.
+- Once the pipeline is set up, trigger the execution to start the data
+  ingestion process.
+- Monitor the pipeline execution progress and check for any failures
+  or errors.
+
+**** Step 10: Verify Data Ingestion in Azure Data Lake Storage Gen2
+- Once the data ingestion pipeline has successfully completed its
+  execution, navigate to your Azure Data Lake Storage Gen2 account.
+- Locate the "raw_data" folder within the storage account, which
+  serves as the designated destination for the ingested data.
+- Inside the "raw_data" folder, you should find the ingested files
+  from the Tokyo Olympics dataset, such as "athletes.csv",
+  "medals.csv", and any other relevant files.
+- Open each file and validate that they contain the expected data in
+  the correct format.
+- Ensure that the data has been accurately transferred from the GitHub
+  repository to the Azure Data Lake Storage Gen2 without any data loss
+  or corruption.
+- Verify that the column names, data types, and overall structure of
+  the ingested data align with the original dataset.
+- If any discrepancies or issues are found, investigate the pipeline
+  configuration and make necessary adjustments to ensure data
+  integrity.
+
+By following these step-by-step instructions, the Tokyo Olympics
+dataset can be successfully ingested from the GitHub repository into
+the designated destination using Azure Data Factory. The ingested data
+will be stored in the specified storage account, ready for further
+processing and analysis in the subsequent stages of the project.
+
+** Data Transformation: Azure Databricks
+- Navigate to Azure Databricks within the Azure portal and create a workspace within the previously established resource group and launch it.
+- Configuring Compute in Databricks
+- Create a new notebook within Databricks and rename it appropriately, reflecting its purpose or the dataset it pertains to.
+- Establishing a Connection to Azure Data Lake Storage (ADLS)
+- Using the credentials (Client ID, Tenant ID, Secret), write the appropriate code in the Databricks notebook to mount ADLS.
+- Writing Data Transformations mount ADLS Gen2 to Databricks.
+- Writing Transformed Data to ADLS Gen2.
+
