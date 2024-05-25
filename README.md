@@ -2,46 +2,46 @@
 
 ## Introduction
 
-This project demonstrates a comprehensive data engineering and
-analytical workflow using the Azure ecosystem to process and gain
-insights from the Tokyo Olympic dataset. The project encompasses the
+This project demonstrates a comprehensive **data engineering** and
+**analytical workflow** using the **Azure ecosystem** to process and gain
+insights from the **Tokyo Olympic dataset**. The project encompasses the
 following key features and stages:
 
 ![Tokyo Olympics](images/1_olympics_2021.jpeg)
 
 
-1. Data Ingestion:
+1. **Data Ingestion**:
    - Ingest the Tokyo Olympic dataset from a CSV file hosted on GitHub
-     using Azure Data Factory.
+     using **Azure Data Factory**.
    - Utilize data pipeline capabilities for reliable and efficient
      data retrieval.
 
-2. Data Storage:
-   - Store the ingested dataset in Azure Data Lake Storage Gen2,
+2. **Data Storage**:
+   - Store the ingested dataset in **Azure Data Lake Storage Gen2**,
      benefiting from its scalability and performance.
    - Leverage the secure and cost-effective storage solution optimized
      for big data analytics.
 
-3. Data Transformation:
-   - Transform and enrich the dataset using Azure Databricks, a fully
-     managed Apache Spark platform.
+3. **Data Transformation**:
+   - Transform and enrich the dataset using **Azure Databricks**, a fully
+     managed **Apache Spark platform**.
    - Perform data manipulations, cleansing, and feature engineering to
      prepare the data for advanced analytics.
 
-4. Enriched Data Storage:
-   - Persist the transformed and enriched dataset back into Azure Data
-     Lake Storage Gen2.
+4. **Enriched Data Storage**:
+   - Persist the transformed and enriched dataset back into **Azure Data
+     Lake Storage Gen2**.
    - Maintain a centralized repository for the processed data,
      enabling integration with downstream analytics.
 
-5. Advanced Analytics:
+5. **Advanced Analytics**:
    - Perform advanced analytical computations on the enriched dataset
-     using Azure Synapse Analytics.
+     using **Azure Synapse Analytic**s.
    - Utilize distributed computing and SQL capabilities to uncover
      patterns, trends, and insights.
 
-6. Data Visualization:
-   - Visualize the derived insights using Azure Synapse Analytics or
+6. **Data Visualization**:
+   - Visualize the derived insights using **Azure Synapse Analytics** or
      Power BI.
    - Create dashboards, reports, and visualizations to communicate the
      findings effectively to stakeholders.
@@ -64,38 +64,40 @@ teams, and events of the Tokyo Olympics.
 
 Key features of the dataset include:
 
-1. Athlete Information:
+1. **Athlete Information**:
    - The dataset contains records of over 11,000 athletes who
      participated in the Tokyo Olympics.
    - Each athlete's name, representing country, gender, and discipline
      are meticulously documented.
 
-2. Discipline Coverage:
-   - The dataset covers a total of 47 distinct disciplines,
+2. **Discipline Coverage**:
+   - The dataset covers a total of **47 distinct disciplines**,
      encompassing a diverse range of sports and events.
    - This extensive coverage allows for a comprehensive analysis of
      athlete performance across various domains.
 
-3. Team Details:
-   - The dataset includes information on 743 teams that took part in
+3. **Team Details**:
+   - The dataset includes information on **743 teams** that took part in
      the Tokyo Olympics.
    - Each team's name, country of representation, and the number of
      athletes in the team are recorded.
 
-4. Entries by Gender:
+4. **Entries by Gender**:
    - The dataset provides a breakdown of entries based on gender,
      enabling gender-based analysis and comparisons.
    - This information allows for an examination of gender
      representation and participation patterns in the Olympics.
 
-5. Coaching Staff:
+5. **Coaching Staff**:
    - The names and details of the coaches associated with each team
      are included in the dataset.
    - This information facilitates the exploration of coaching dynamics
      and their potential impact on team performance.
 
-The dataset's source is Kaggle, a renowned platform for data science
-and machine learning enthusiasts.
+The dataset's source is Kaggle [Data
+Source](https://www.kaggle.com/datasets/arjunprasadsarkhel/2021-olympics-in-tokyo
+), a renowned platform for data science and machine learning
+enthusiasts.
 
 https://www.kaggle.com/datasets/arjunprasadsarkhel/2021-olympics-in-tokyo
 
@@ -133,13 +135,13 @@ of SQL and Spark.
 
 ### Initial Setup
 - Create Azure Free Subscription acoount
-- Create a Resource Group 'tokyo-olympic-data' to house and manage all
+- Create a Resource Group **'tokyo-olympic-data'** to house and manage all
   the Azure resources associated with this project.
 - Within the created resource group, set up a storage account. This is
-  specifically configured to leverage Azure Data Lake Storage(ADLS)
-  Gen2 capabilities.
+  specifically configured to leverage **Azure Data Lake Storage(ADLS)
+  Gen2** capabilities.
 - Create a Container inside this storage account to hold the project's
-  data. Two directories 'raw-data' and 'transfromed-data' are created
+  data. Two directories **'raw-data'** and **'transfromed-data'** are created
   to store raw data and transformed data.
   
   ![Data Lake](images/2_data_lake.png)
@@ -164,7 +166,7 @@ Data Ingestion with Azure Data Factory
 - Obtain the Tokyo Olympics dataset from Kaggle or any other reliable
   source.
 - Upload the dataset to a GitHub repository, ensuring that it is
-  accessible via HTTP requests.
+  accessible via **HTTP requests**.
 - Make note of the GitHub repository URL and any necessary
   authentication details.
   
@@ -173,7 +175,7 @@ Data Ingestion with Azure Data Factory
 #### Step 4: Create a New Data Integration Pipeline
 - Within the Azure Data Factory Studio, initialize a new data
   integration pipeline.
-- Utilize the "Copy Data" task to efficiently move data between
+- Utilize the **"Copy Data"** task to efficiently move data between
   various supported sources and destinations.
 - The "Copy Data" task allows for seamless data transfer from the
   GitHub repository to the desired destination.
@@ -223,15 +225,15 @@ Data Ingestion with Azure Data Factory
 #### Step 10: Verify Data Ingestion in Azure Data Lake Storage Gen2
 - Once the data ingestion pipeline has successfully completed its
   execution, navigate to your Azure Data Lake Storage Gen2 account.
-- Locate the "raw_data" folder within the storage account, which
+- Locate the **"raw_data"** folder within the storage account, which
   serves as the designated destination for the ingested data.
 - Inside the "raw_data" folder, you should find the ingested files
-  from the Tokyo Olympics dataset, such as "athletes.csv",
-  "medals.csv", and any other relevant files.
+  from the Tokyo Olympics dataset, such as **"athletes.csv"**,
+  **"medals.csv"**, and any other relevant files.
 - Open each file and validate that they contain the expected data in
   the correct format.
 - Ensure that the data has been accurately transferred from the GitHub
-  repository to the Azure Data Lake Storage Gen2 without any data loss
+  repository to the **Azure Data Lake Storage Gen2** without any data loss
   or corruption.
 - Verify that the column names, data types, and overall structure of
   the ingested data align with the original dataset.
@@ -260,7 +262,9 @@ then using the secret scope we can simply add the azure databricks
 deployment link instead of the
 databricks-instance.
 
+```
 https://<databricks-instance>#secrets/createScope
+```
 
 This will take us to the create secret scope page where we can create
 the secret scope.
@@ -341,6 +345,7 @@ dbutils.fs.mount(
     mount_point=mount_point,
     extra_configs=configs
 )
+```
 
 #### Step 6: Perform Data Transformations
 - Write the necessary data transformation code in the Databricks
@@ -377,7 +382,7 @@ teams = teams.withColumn("TeamName", upper(col("TeamName"))) \
             .withColumn("Discipline", initcap(col("Discipline"))) \
             .withColumn("Country", upper(col("Country"))) \
             .withColumn("Event", initcap(col("Event")))
-			
+```		
 
 #### Step 7: Write Transformed Data to ADLS Gen2
 - After completing the data transformations, write the transformed
@@ -399,7 +404,7 @@ coaches.repartition(1).write.mode("overwrite").option("header", "true").csv(f"{p
 entriesgender.repartition(1).write.mode("overwrite").option("header", "true").csv(f"{path}/entriesgender")
 medals.repartition(1).write.mode("overwrite").option("header", "true").csv(f"{path}/medals")
 teams.repartition(1).write.mode("overwrite").option("header", "true").csv(f"{path}/teams")
-
+```
 
 The script for databrciks notebook is uploaded as [Databricks Notebook](Tokyo_Olympic_Transformation.ipynb)
 ### Loading: Azure Synapse Analytics
@@ -419,6 +424,7 @@ Here are some sql queries that i ran for analysis
 SELECT TOP 10 TeamCountry, Gold
 FROM medals
 ORDER BY Gold DESC;
+```
  ![Top 10 countries with the most gold medals](images/01_sql_queries.jpeg)
 
 ##### Query 2: Number of athletes per discipline
@@ -427,6 +433,7 @@ SELECT a.Discipline, COUNT(*) AS AthleteCount
 FROM athletes a
 GROUP BY a.Discipline
 ORDER BY AthleteCount DESC;
+```
  ![Number of athletes per discipline](images/02_sql_queries.jpeg)
 
 ##### Query 3: Disciplines with the highest female participation
@@ -434,6 +441,7 @@ ORDER BY AthleteCount DESC;
 SELECT TOP 5 Discipline, Female
 FROM entriesgender
 ORDER BY Female DESC;
+```
  ![Disciplines with the highest female participation](images/03_sql_queries.jpeg)
 
 ##### Query 4: Countries with the highest medal conversion rate (medals per athlete)
@@ -445,6 +453,7 @@ JOIN athletes a ON m.TeamCountry = a.Country
 GROUP BY m.TeamCountry
 HAVING COUNT(DISTINCT a.PersonName) > 0
 ORDER BY MedalsPerAthlete DESC;
+```
  ![Countries with the highest medal conversion rate](images/04_sql_queries.jpeg)
 
 ##### Query 5: Events with the highest number of medal events
@@ -454,6 +463,7 @@ FROM athletes a
 JOIN medals m ON a.Country = m.TeamCountry
 GROUP BY a.PersonName, a.Country
 HAVING COUNT(DISTINCT a.Discipline) > 1;
+```
 
 ##### Query 6: Medals won by each country in each discipline
 ```sql
@@ -461,6 +471,7 @@ SELECT m.TeamCountry, SUM(m.Gold) AS GoldMedals, SUM(m.Silver) AS SilverMedals, 
 FROM medals m
 GROUP BY m.TeamCountry
 ORDER BY GoldMedals DESC, SilverMedals DESC, BronzeMedals DESC, m.TeamCountry;
+```
  ![Medals won by each country in each discipline](images/06_sql_queries.jpeg)
 
 ##### Query 7: Disciplines with the highest number of world records broken
@@ -470,6 +481,7 @@ FROM medals m
 JOIN teams t ON m.TeamCountry = t.Country
 GROUP BY t.Discipline
 ORDER BY MedalCount DESC;
+```
  ![ Disciplines with the highest number of world records broken](images/07_sql_queries.jpeg)
 
 ##### Query 8: Countries with the most coaches
@@ -478,6 +490,7 @@ SELECT TOP 10 c.Country, COUNT(*) AS CoachCount
 FROM coaches c
 GROUP BY c.Country
 ORDER BY CoachCount DESC;
+```
  ![Gender distribution of athletes by country](images/08_sql_queries.jpeg)
 
 ##### Query 9: Gender distribution of athletes by country
@@ -488,6 +501,7 @@ SELECT a.Country,
 FROM athletes a
 JOIN entriesgender e ON a.Discipline = e.Discipline
 GROUP BY a.Country;
+```
  ![Tables in Synapse Analytics](images/09_sql_queries.jpeg)
 
 ##### Query 10: Coaches with the most gold medals
@@ -499,6 +513,7 @@ JOIN teams t ON c.Country = t.Country AND c.Discipline = t.Discipline
 WHERE m.Gold = 1
 GROUP BY c.Name, c.Country, c.Discipline
 ORDER BY GoldMedals DESC;
+```
  ![Coaches with the most gold medals](images/10_sql_queries.jpeg)
 
 
